@@ -5,5 +5,5 @@ import tailwindcss from '@tailwindcss/vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [svelte(), tailwindcss()],
-  base: "/the-art-of-algothirm",
+  base: "/the-art-of-algorithm",
 })
