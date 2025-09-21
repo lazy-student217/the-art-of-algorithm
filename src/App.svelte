@@ -1,70 +1,56 @@
 <script lang="ts">
-  import Grid from "./lib/Grid.svelte";
-  const original_grid = [
-    [1, 2, 3, -1],
-    [4, 5, -5, 8],
-    [1, 2, -3, 2],
-    [3, 1, 4, -2],
-  ];
-  let grid: Grid;
-  let playing = $state(false);
-  function reset() {
-    grid.set_grid(original_grid);
-  }
+    import { onDestroy, onMount } from "svelte";
+    import Slide1 from "./slides/Slide1.svelte";
+    import Slide2 from "./slides/Slide2.svelte";
 
-  async function play() {
-    if (!playing) {
-      playing = true;
+    let slide = $state(0);
+    let slides = [Slide1, Slide2];
+    let Slide = $derived(slides[slide]);
 
-      for (let sum = 1; sum <= 6; sum += 1) {
-        const anims = [];
-        for (let x = Math.max(0, sum - 3); x < Math.min(4, sum + 1); x += 1) {
-          const y = sum - x;
-          if (x != 0) {
-            anims.push(grid.move_copy_to_fade(x - 1, y, x, y));
-          }
-          if (y != 0) {
-            anims.push(grid.move_copy_to_fade(x, y - 1, x, y));
-          }
-        }
-        await Promise.all(anims);
-        for (let x = Math.max(0, sum - 3); x < Math.min(4, sum + 1); x += 1) {
-          const y = sum - x;
-          if (x == 0) {
-            grid.set_slot(x, y, grid.get_slot(x, y - 1) + grid.get_slot(x, y));
-          } else if (y == 0) {
-            grid.set_slot(x, y, grid.get_slot(x - 1, y) + grid.get_slot(x, y));
-          } else {
-            grid.set_slot(
-              x,
-              y,
-              Math.max(grid.get_slot(x - 1, y), grid.get_slot(x, y - 1)) +
-                grid.get_slot(x, y),
-            );
-          }
-        }
-      }
-      playing = false;
+    function next_slide() {
+        slide += 1;
     }
-  }
+
+    function prev_slide() {
+        slide -= 1;
+    }
+
+    function listen_enter(e: KeyboardEvent) {
+        if (e.key == "Enter" && slide != slides.length - 1) {
+            e.preventDefault();
+            next_slide();
+        }
+    }
+
+    onMount(() => {
+        document.addEventListener("keydown", listen_enter);
+    });
+
+    onDestroy(() => {
+        document.removeEventListener("keydown", listen_enter);
+    });
 </script>
 
-<main class="flex flex-col items-center justify-center">
-  <div class="py-16 flex items-center flex-col">
-    <div class="p-4 flex flex-col items-center">
-      <Grid bind:this={grid} grid={original_grid} />
+<main class="flex flex-col items-center justify-center py-8 overflow-hidden">
+    <div class="grow-1 flex items-center">
+        <Slide />
     </div>
-    <div class="flex gap-3">
-      <button
-        class="p-2 border-2 border-black rounded-md hover:bg-black hover:text-white transition-colors"
-        onclick={play}
-        disabled={playing}>Play</button
-      >
-      <button
-        class="p-2 border-2 border-black rounded-md hover:bg-black hover:text-white transition-colors"
-        onclick={reset}
-        disabled={playing}>Reset</button
-      >
+    <div class="flex flex-row w-full px-4">
+        {#if slide != 0}
+            <button
+                class="text-7xl! material-symbols-outlined hover:scale-120 transition-all mr-auto"
+                onclick={prev_slide}
+            >
+                chevron_backward
+            </button>
+        {/if}
+        {#if slide != slides.length - 1}
+            <button
+                class="text-7xl! material-symbols-outlined hover:scale-120 transition-all ml-auto"
+                onclick={next_slide}
+            >
+                chevron_forward
+            </button>
+        {/if}
     </div>
-  </div>
 </main>
