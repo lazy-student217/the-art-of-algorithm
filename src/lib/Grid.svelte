@@ -2,29 +2,24 @@
     import { animate, type AnimationPlaybackControlsWithThen } from "motion";
 
     interface Props {
-        grid: number[][];
+        grid: (number | null)[][];
     }
     const { grid: grid_props }: Props = $props();
     let grid = $state(grid_props);
 
     let grid_span: HTMLSpanElement[][] = $state(
-        // svelte-ignore state_referenced_locally
         Array.from({ length: grid.length }, () =>
             Array(grid[0].length).fill(undefined),
         ),
     );
 
-    export function set_grid(new_grid: number[][]): void {
-        grid = new_grid;
-    }
+    let grid_cell: HTMLTableCellElement[][] = $state(
+        Array.from({ length: grid.length }, () =>
+            Array(grid[0].length).fill(undefined),
+        ),
+    );
 
-    export function set_slot(i: number, j: number, val: number): void {
-        grid[i][j] = val;
-    }
-
-    export function get_slot(i: number, j: number): number {
-        return grid[i][j];
-    }
+    export { grid_span, grid, grid_cell };
 
     function move_element(
         el: HTMLElement,
@@ -106,11 +101,12 @@
             <tr>
                 {#each row as item, j}
                     <td
-                        class="border-2 border-black text-center min-w-12 h-12 rounded-md"
+                        class="border-2 border-black text-center min-w-16 h-16 rounded-md"
+                        bind:this={grid_cell[i][j]}
                     >
                         {#key item}
                             <span
-                                class="text-xl inline-block"
+                                class="text-3xl inline-block"
                                 bind:this={grid_span[i][j]}
                             >
                                 {item}
