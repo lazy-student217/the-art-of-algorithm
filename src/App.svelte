@@ -6,6 +6,7 @@
     import Sudoku from "./slides/Sudoku.svelte";
     import { animate } from "motion";
     import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
+    import BacktoSudoku from "./slides/BacktoSudoku.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -13,7 +14,7 @@
     }
 
     let slide = $state(0);
-    let slides = [Introduction, Sudoku, Title, ShortestPathSum];
+    let slides = [Introduction, Sudoku, Title, BacktoSudoku, ShortestPathSum];
     let Slide = $derived(slides[slide]);
     let slide_obj: SlideInstance;
     let buttons: HTMLDivElement;
@@ -58,7 +59,7 @@
 <svelte:document {onkeydown} />
 
 <main class="flex flex-col items-center justify-center py-8 overflow-hidden">
-    <div class="grow-1 flex items-center">
+    <div class="grow-1 flex items-center w-full justify-center">
         <Slide bind:this={slide_obj} />
     </div>
     <div class="flex flex-row w-full px-4" bind:this={buttons}>
