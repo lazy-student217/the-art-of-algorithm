@@ -1,10 +1,11 @@
 <script lang="ts">
-    import { onDestroy, onMount, tick } from "svelte";
+    import { tick } from "svelte";
     import Introduction from "./slides/Introduction.svelte";
     import Title from "./slides/Title.svelte";
     import ShortestPathSum from "./slides/ShortestPathSum.svelte";
     import Sudoku from "./slides/Sudoku.svelte";
     import { animate } from "motion";
+    import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -63,18 +64,20 @@
     <div class="flex flex-row w-full px-4" bind:this={buttons}>
         {#if slide != 0}
             <button
-                class="text-7xl! material-symbols-outlined hover:scale-120 transition-all mr-auto"
+                class="hover:scale-120 transition-all mr-auto"
+                aria-label="left"
                 onclick={prev_slide}
             >
-                chevron_backward
+                <ChevronLeft size={54} />
             </button>
         {/if}
         {#if slide != slides.length - 1}
             <button
-                class="text-7xl! material-symbols-outlined hover:scale-120 transition-all ml-auto"
+                class="hover:scale-120 transition-all ml-auto"
+                aria-label="right"
                 onclick={next_slide}
             >
-                chevron_forward
+                <ChevronRight size={54} />
             </button>
         {/if}
     </div>
