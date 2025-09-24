@@ -1,5 +1,7 @@
-@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/jetbrains-mono';
+@import '@fontsource/noto-serif-hk/600.css';
 @import "tailwindcss";
+
 
 html,
 body,
@@ -8,6 +10,6 @@ main {
     min-height: 100vh;
 }
 
-@theme inline {
-    --font-sans: 'Jetbrains Mono Variable', monospace;
+@theme {
+    --font-sans: 'Jetbrains Mono', 'Noto Serif HK', monospace;
 }

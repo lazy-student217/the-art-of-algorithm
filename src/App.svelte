@@ -4,9 +4,11 @@
     import Title from "./slides/Title.svelte";
     import ShortestPathSum from "./slides/ShortestPathSum.svelte";
     import Sudoku from "./slides/Sudoku.svelte";
+    import BackToSudoku from "./slides/BackToSudoku.svelte";
     import { animate } from "motion";
     import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
-    import BacktoSudoku from "./slides/BacktoSudoku.svelte";
+    import WhatIsAlgorithm from "./slides/WhatIsAlgorithm.svelte";
+    import SimpleExample from "./slides/SimpleExample.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -14,7 +16,16 @@
     }
 
     let slide = $state(0);
-    let slides = [Introduction, Sudoku, Title, BacktoSudoku, ShortestPathSum];
+    let slides = [
+        Introduction,
+        Sudoku,
+        Title,
+        BackToSudoku,
+        Title,
+        WhatIsAlgorithm,
+        SimpleExample,
+        ShortestPathSum,
+    ];
     let Slide = $derived(slides[slide]);
     let slide_obj: SlideInstance;
     let buttons: HTMLDivElement;
@@ -42,7 +53,6 @@
     }
 
     function onkeydown(e: KeyboardEvent) {
-        console.log(e);
         if (
             (e.key === "ArrowRight" || e.key === "Enter") &&
             slide !== slides.length - 1

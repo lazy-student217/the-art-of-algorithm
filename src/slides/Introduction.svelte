@@ -39,7 +39,7 @@
     let problems = $state("problems");
 </script>
 
-<div class="backface-hidden will-change-transform" bind:this={slide}>
+<div bind:this={slide}>
     <h1 class="text-6xl/25 text-center line">
         Have you wonder how <br /> computers <b>solve</b>
         <button onclick={change_problem} class="cursor-pointer underline"
