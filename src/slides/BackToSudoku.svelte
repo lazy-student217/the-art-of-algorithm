@@ -1,7 +1,7 @@
 <script lang="ts">
     import { animate } from "motion";
     import { onMount } from "svelte";
-    import { timeout } from "../lib/utils";
+    import { timeout, nullgetter } from "../lib/utils"; // ! Do not delete the use of `nullgetter`
 
     let slide: HTMLElement;
 
