@@ -55,11 +55,7 @@
   }
 </script>
 
-<button
-  class="backface-hidden will-change-transform"
-  {onclick}
-  bind:this={title}
->
+<button bind:this={title} {onclick}>
   <h1 class="text-6xl">
     <span class="inline-block" bind:this={left}>The</span>
     <span bind:this={span} class="inline-block">{title_text}</span>

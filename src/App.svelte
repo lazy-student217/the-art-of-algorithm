@@ -1,14 +1,17 @@
 <script lang="ts">
     import { tick } from "svelte";
+    import { animate } from "motion";
+    import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
     import Introduction from "./slides/Introduction.svelte";
     import Title from "./slides/Title.svelte";
     import ShortestPathSum from "./slides/ShortestPathSum.svelte";
     import Sudoku from "./slides/Sudoku.svelte";
     import BackToSudoku from "./slides/BackToSudoku.svelte";
-    import { animate } from "motion";
-    import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
     import WhatIsAlgorithm from "./slides/WhatIsAlgorithm.svelte";
     import SimpleExample from "./slides/SimpleExample.svelte";
+    import SimpleExample2 from "./slides/SimpleExample2.svelte";
+    import SimpleExample3 from "./slides/SimpleExample3.svelte";
+    import BinarySearch from "./slides/BinarySearch.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -24,6 +27,9 @@
         Title,
         WhatIsAlgorithm,
         SimpleExample,
+        SimpleExample2,
+        SimpleExample3,
+        BinarySearch,
         ShortestPathSum,
     ];
     let Slide = $derived(slides[slide]);
@@ -31,11 +37,11 @@
     let buttons: HTMLDivElement;
 
     async function button_fade_in() {
-        await animate(buttons, { opacity: [0, 1] });
+        await animate(buttons, { opacity: [0, 1], width: ["120%", "100%"] });
     }
 
     async function button_fade_out() {
-        await animate(buttons, { opacity: [1, 0] });
+        await animate(buttons, { opacity: [1, 0], width: ["100%", "120%"] });
     }
 
     async function next_slide() {
@@ -79,7 +85,7 @@
                 aria-label="left"
                 onclick={prev_slide}
             >
-                <ChevronLeft size={54} />
+                <ChevronLeft size={68} />
             </button>
         {/if}
         {#if slide != slides.length - 1}
@@ -88,7 +94,7 @@
                 aria-label="right"
                 onclick={next_slide}
             >
-                <ChevronRight size={54} />
+                <ChevronRight size={68} />
             </button>
         {/if}
     </div>

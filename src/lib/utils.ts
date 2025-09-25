@@ -15,6 +15,9 @@ export async function flip(elements: HTMLElement[], layout_changes: () => Promis
         const after_bounding_rect = elements[i].getBoundingClientRect();
         const dx = prev_bounding_rects[i].x - after_bounding_rect.x;
         const dy = prev_bounding_rects[i].y - after_bounding_rect.y;
+        if (dx === 0 && dy === 0) {
+            continue;
+        }
         elements[i].style.transform = `translate(${dx}px, ${dy}px)`;
         animate(elements[i], {
             x: [dx, 0],
