@@ -4,7 +4,6 @@
     import { ChevronLeft, ChevronRight } from "@lucide/svelte/icons";
     import Introduction from "./slides/Introduction.svelte";
     import Title from "./slides/Title.svelte";
-    import ShortestPathSum from "./slides/ShortestPathSum.svelte";
     import Sudoku from "./slides/Sudoku.svelte";
     import BackToSudoku from "./slides/BackToSudoku.svelte";
     import WhatIsAlgorithm from "./slides/WhatIsAlgorithm.svelte";
@@ -12,6 +11,7 @@
     import SimpleExample2 from "./slides/SimpleExample2.svelte";
     import SimpleExample3 from "./slides/SimpleExample3.svelte";
     import BinarySearch from "./slides/BinarySearch.svelte";
+    import BinarySearch2 from "./slides/BinarySearch2.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -30,7 +30,7 @@
         SimpleExample2,
         SimpleExample3,
         BinarySearch,
-        ShortestPathSum,
+        BinarySearch2,
     ];
     let Slide = $derived(slides[slide]);
     let slide_obj: SlideInstance;

@@ -1,8 +1,13 @@
 <script lang="ts">
-    const slots = ["A", "C", "D", "F", "B", "H", "E", "G"];
-    export const slot_divs: (HTMLElement | undefined)[] = Array(
-        slots.length,
-    ).fill(undefined);
+    interface Props {
+        slots: string[];
+        span_class?: string;
+    }
+    const { slots, span_class = "text-4xl" }: Props = $props();
+    export const slot_divs: (HTMLElement | undefined)[] = $state(
+        Array(slots.length).fill(undefined),
+    );
+    export { slots };
 </script>
 
 <div class="w-fit mx-auto">
@@ -10,7 +15,7 @@
         {#each slots as slot, i}
             <div
                 bind:this={slot_divs[i]}
-                class="border-2 w-16 h-16 flex items-center justify-center rounded-md border-black text-4xl font-bold"
+                class={`border-2 w-18 h-18 flex items-center justify-center rounded-md border-black font-bold ${span_class}`}
             >
                 {slot}
             </div>

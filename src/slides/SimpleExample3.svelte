@@ -42,7 +42,7 @@
 <div bind:this={slide} class="text-5xl/relaxed text-center">
     <button onclick={show_order} bind:this={description}>
         <p>Now, we have the sorted list of libraries.</p>
-        <ShortOrder />
+        <ShortOrder slots={["A", "C", "D", "F", "B", "H", "E", "G"]} />
     </button>
     {#if showing_order}
         <div class="mt-[1em]" bind:this={order}>

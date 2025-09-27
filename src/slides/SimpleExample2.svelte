@@ -51,7 +51,7 @@
         <div class="mt-[1em]" bind:this={order}>
             <p>The order would look something like:</p>
 
-            <ShortOrder />
+            <ShortOrder slots={["A", "C", "D", "F", "B", "H", "E", "G"]} />
         </div>
     {/if}
 </div>
