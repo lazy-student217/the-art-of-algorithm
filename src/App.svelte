@@ -40,7 +40,7 @@
         WhyCare,
         SieveOfEratosthenes,
         SieveOfEratosthenes2,
-        // Sorting,
+        Sorting,
         Credit,
         ThankYou,
     ];
@@ -97,7 +97,7 @@
                 aria-label="left"
                 onclick={prev_slide}
             >
-                <ChevronLeft size={68} />
+                <ChevronLeft class="cursor-pointer" size={64} />
             </button>
         {/if}
         {#if slide != slides.length - 1}
@@ -106,7 +106,7 @@
                 aria-label="right"
                 onclick={next_slide}
             >
-                <ChevronRight size={68} />
+                <ChevronRight class="cursor-pointer" size={64} />
             </button>
         {/if}
     </div>
