@@ -60,7 +60,7 @@
             onclick={change_description}
         >
             <p>
-                You have thought about search it library by library.
+                You have thought about searching it library by library.
                 <br />
                 However, it's <i>painfully slow</i>.
                 <br />
