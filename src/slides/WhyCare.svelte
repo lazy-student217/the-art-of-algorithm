@@ -88,7 +88,7 @@
                 <span class="text-left">Secure hashing algorithm</span>
                 <span class="text-right">Running 3D games</span>
                 <span><ArrowRight class="inline wh-em" /></span>
-                <span class="text-left">Matrix multiply algorithm</span>
+                <span class="text-left">Matrix multiplication algorithm</span>
                 <span class="text-right">Training AI</span>
                 <span><ArrowRight class="inline wh-em" /></span>
                 <span class="text-left">Backpropagation</span>
