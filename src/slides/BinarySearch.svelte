@@ -138,7 +138,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html = "If there is multiple one, choose the left one.";
+                step_html = "If there is multiple ones, choose the left one.";
                 return tick();
             });
             animate(short_order!.slot_divs[4]!, {
