@@ -18,6 +18,7 @@
     import SieveOfEratosthenes from "./slides/SieveOfEratosthenes.svelte";
     import SieveOfEratosthenes2 from "./slides/SieveOfEratosthenes2.svelte";
     import Sorting from "./slides/Sorting.svelte";
+    import MuchMoreToExplore from "./slides/MuchMoreToExplore.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -38,6 +39,7 @@
         BinarySearch,
         BinarySearch2,
         WhyCare,
+        MuchMoreToExplore,
         SieveOfEratosthenes,
         SieveOfEratosthenes2,
         Sorting,

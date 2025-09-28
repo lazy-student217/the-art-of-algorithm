@@ -57,6 +57,10 @@
         >
             <p>
                 Think about how to solve a problem <b>in general</b>
+                <br />
+                Solve a problem <b>step by step</b>
+                <br />
+                Computer only understand explicit instructions!
             </p>
         </button>
     {:else if progress === 3}
