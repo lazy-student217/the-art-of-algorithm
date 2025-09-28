@@ -90,6 +90,18 @@
             </p>
         </button>
     {:else if progress === 5}
+        <button
+            class="text-6xl/relaxed text-center"
+            onclick={change_description}
+            bind:this={description_div}
+        >
+            <p>
+                Binary Search might seems very intuitive, obvious
+                <br />
+                But it has a lot of unexpected usecase!
+            </p>
+        </button>
+    {:else if progress === 6}
         <div class="text-6xl/relaxed text-center" bind:this={description_div}>
             <p>
                 The beauty of Algorithms <ArrowDown class="wh-em mx-auto" /> The
