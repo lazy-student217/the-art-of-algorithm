@@ -551,7 +551,7 @@
             </p>
             <br />
             <p>
-                To ensure we filter out as much as possible in each
+                To ensure we filter out as many as possible in each
                 <br />
                 case, we always choose <b>the middle one</b> to check.
             </p>
