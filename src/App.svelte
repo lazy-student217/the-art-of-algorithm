@@ -12,6 +12,9 @@
     import SimpleExample3 from "./slides/SimpleExample3.svelte";
     import BinarySearch from "./slides/BinarySearch.svelte";
     import BinarySearch2 from "./slides/BinarySearch2.svelte";
+    import WhyCare from "./slides/WhyCare.svelte";
+    import Credit from "./slides/Credit.svelte";
+    import ThankYou from "./slides/ThankYou.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -31,6 +34,9 @@
         SimpleExample3,
         BinarySearch,
         BinarySearch2,
+        WhyCare,
+        Credit,
+        ThankYou,
     ];
     let Slide = $derived(slides[slide]);
     let slide_obj: SlideInstance;

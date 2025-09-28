@@ -108,9 +108,15 @@
                     const dj = d % 32;
                     const di = (d - dj) / 32;
                     animations.push(
-                        animate(arr_component!.grid_cell[di][dj]!, {
-                            backgroundColor: "var(--color-red-300)",
-                        }),
+                        animate(
+                            arr_component!.grid_cell[di][dj]!,
+                            {
+                                backgroundColor: "var(--color-red-300)",
+                            },
+                            {
+                                delay: (m - d) * 0.008,
+                            },
+                        ),
                     );
                 }
                 l = m + 1;
@@ -119,9 +125,15 @@
                     const dj = d % 32;
                     const di = (d - dj) / 32;
                     animations.push(
-                        animate(arr_component!.grid_cell[di][dj]!, {
-                            backgroundColor: "var(--color-red-300)",
-                        }),
+                        animate(
+                            arr_component!.grid_cell[di][dj]!,
+                            {
+                                backgroundColor: "var(--color-red-300)",
+                            },
+                            {
+                                delay: (d - m) * 0.008,
+                            },
+                        ),
                     );
                 }
                 r = m - 1;
@@ -144,19 +156,19 @@
 <div bind:this={slide}>
     {#if progress === 1}
         <div bind:this={example_div} class="flex items-center">
-            <div class="flex-col items-center px-12">
-                <div class="flex flex-col text-4xl gap-8 items-center py-8">
+            <div class="flex-col items-center px-8">
+                <div class="flex flex-col text-4xl gap-6 items-center py-8">
                     <p class="text-gray-500">Size</p>
                     <Latex tex="32 \times 32 = 1024" />
                 </div>
-                <div class="flex flex-col text-4xl gap-8 items-center py-8">
+                <div class="flex flex-col text-4xl gap-6 items-center py-8">
                     <p class="text-gray-500">
                         Theoretical Max Search Count <br /> (Theoretical Max Days
                         Passed)
                     </p>
                     <Latex tex="\log_2(1024) = 11" />
                 </div>
-                <div class="flex flex-col text-5xl gap-8 items-center py-8">
+                <div class="flex flex-col text-5xl gap-6 items-center py-8">
                     <p class="text-gray-500">
                         Real Search Count <br /> (Real Days Passed)
                     </p>
