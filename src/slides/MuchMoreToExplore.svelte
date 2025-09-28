@@ -99,6 +99,9 @@
                 Binary Search might seems very intuitive, obvious
                 <br />
                 But it has a lot of unexpected usecase!
+                <br />
+                It also turns out to be the optimal searching <br /> way for general
+                sorted list!
             </p>
         </button>
     {:else if progress === 6}
