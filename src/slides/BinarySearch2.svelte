@@ -114,7 +114,7 @@
                                 backgroundColor: "var(--color-red-300)",
                             },
                             {
-                                delay: (m - d) * 0.008,
+                                delay: (m - d) * 0.005,
                             },
                         ),
                     );
@@ -131,7 +131,7 @@
                                 backgroundColor: "var(--color-red-300)",
                             },
                             {
-                                delay: (d - m) * 0.008,
+                                delay: (d - m) * 0.005,
                             },
                         ),
                     );

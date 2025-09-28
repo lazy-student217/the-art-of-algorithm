@@ -16,7 +16,7 @@
             <tr>
                 {#each { length: 32 }, j}
                     <td
-                        class="border-1 border-black text-center w-6 h-6"
+                        class="border-1 border-black text-center w-6.5 h-6.5"
                         bind:this={grid_cell[i][j]}
                     >
                         <button

@@ -15,6 +15,9 @@
     import WhyCare from "./slides/WhyCare.svelte";
     import Credit from "./slides/Credit.svelte";
     import ThankYou from "./slides/ThankYou.svelte";
+    import SieveOfEratosthenes from "./slides/SieveOfEratosthenes.svelte";
+    import SieveOfEratosthenes2 from "./slides/SieveOfEratosthenes2.svelte";
+    import Sorting from "./slides/Sorting.svelte";
 
     interface SlideInstance {
         exit: () => Promise<void>;
@@ -35,6 +38,9 @@
         BinarySearch,
         BinarySearch2,
         WhyCare,
+        SieveOfEratosthenes,
+        SieveOfEratosthenes2,
+        // Sorting,
         Credit,
         ThankYou,
     ];
@@ -80,11 +86,11 @@
 
 <svelte:document {onkeydown} />
 
-<main class="flex flex-col items-center justify-center py-8 overflow-hidden">
+<main class="flex flex-col items-center justify-center overflow-hidden">
     <div class="grow-1 flex items-center w-full justify-center">
         <Slide bind:this={slide_obj} />
     </div>
-    <div class="flex flex-row w-full px-4" bind:this={buttons}>
+    <div class="flex flex-row w-full p-4" bind:this={buttons}>
         {#if slide != 0}
             <button
                 class="hover:scale-120 transition-all mr-auto"

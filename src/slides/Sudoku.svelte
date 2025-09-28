@@ -198,6 +198,7 @@
 
     <Grid
         bind:this={grid}
+        large
         grid={[
             [5, 3, null, null, 7, null, null, null, null],
             [6, null, null, 1, 9, 5, null, null, null],

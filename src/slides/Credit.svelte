@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { ArrowRight } from "@lucide/svelte";
     import { animate } from "motion";
     import { tick } from "svelte";
-    import Latex from "../lib/Latex.svelte";
 
     let slide: HTMLElement;
-    let simple_example: HTMLElement | undefined = $state(undefined);
     let progress = $state(0);
     let description_div: HTMLElement | undefined = $state(undefined);
 

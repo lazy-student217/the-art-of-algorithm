@@ -3,8 +3,9 @@
 
     interface Props {
         grid: (number | null)[][];
+        large?: boolean;
     }
-    const { grid: grid_props }: Props = $props();
+    const { grid: grid_props, large = false }: Props = $props();
     let grid = $state(grid_props);
 
     let grid_span: HTMLSpanElement[][] = $state(
@@ -93,6 +94,13 @@
         grid[i1][j1] = grid[i2][j2];
         grid[i2][j2] = tmp;
     }
+
+    const cell_class = $derived(
+        `border-2 border-black text-center ${large ? "min-w-18 h-18" : "min-w-16 h-16"} rounded-lg`,
+    );
+    const span_class = $derived(
+        `inline-block ${large ? "text-4xl" : "text-3xl"}`,
+    );
 </script>
 
 <table class="border-separate">
@@ -100,13 +108,10 @@
         {#each grid as row, i}
             <tr>
                 {#each row as item, j}
-                    <td
-                        class="border-2 border-black text-center min-w-16 h-16 rounded-md"
-                        bind:this={grid_cell[i][j]}
-                    >
+                    <td class={cell_class} bind:this={grid_cell[i][j]}>
                         {#key item}
                             <span
-                                class="text-3xl inline-block"
+                                class={span_class}
                                 bind:this={grid_span[i][j]}
                             >
                                 {item}

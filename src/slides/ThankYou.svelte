@@ -21,7 +21,9 @@
 
 <div bind:this={slide}>
     <h1 class="text-7xl py-10 text-center">Thank you for listening!</h1>
-    <h2 class="text-3xl py-6 text-center">
-        Open source at Github with MIT License
+    <h2 class="text-3xl/relaxed py-6 text-center">
+        Open source on Github with MIT License
+        <br />
+        Built with Svelte, Tailwind and Motion
     </h2>
 </div>
