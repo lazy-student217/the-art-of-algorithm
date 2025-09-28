@@ -84,7 +84,7 @@
             bind:this={description_div}
         >
             <p>
-                Thousands computer scientist <br /> working on these algorithm!
+                Thousands computer scientists <br /> working on these algorithm!
                 <br />
                 Not for anything else but <br /> the beauty of algorithms!
             </p>
@@ -100,8 +100,9 @@
                 <br />
                 But it has a lot of unexpected usecase!
                 <br />
-                It also turns out to be the optimal searching <br /> way for general
-                sorted list!
+                It also turns out to be the <b>optimal</b> searching
+                <br />
+                way for general sorted list!
             </p>
         </button>
     {:else if progress === 6}
