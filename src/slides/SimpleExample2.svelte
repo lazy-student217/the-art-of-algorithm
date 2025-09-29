@@ -42,9 +42,7 @@
 <div bind:this={slide} class="text-5xl/relaxed text-center">
     <button onclick={show_order} bind:this={description}>
         <p>
-            Let's simplify things down first. <br /> Suppose we have only 8
-            libraries now. <br />
-            How about naming them library A, B, C and so on?
+            Simplify things down! <br /> Only <b>8 libraries</b> A, B, C... now
         </p>
     </button>
     {#if showing_order}

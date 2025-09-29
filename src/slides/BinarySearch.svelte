@@ -3,7 +3,13 @@
     import { tick } from "svelte";
     import ShortOrder from "../lib/ShortOrder.svelte";
     import { flip } from "../lib/utils";
-    import { ArrowDown, ArrowRight, EqualApproximately } from "@lucide/svelte";
+    import {
+        ArrowDown,
+        ArrowRight,
+        Cross,
+        EqualApproximately,
+        X,
+    } from "@lucide/svelte";
     import Latex from "../lib/Latex.svelte";
 
     let slide: HTMLElement;
@@ -16,6 +22,7 @@
     let step_html: string | undefined = $state(undefined);
     let short_order: ShortOrder | undefined = $state(undefined);
     let chosen_lib: HTMLElement | undefined = $state(undefined);
+    let step = $state(0);
 
     export async function enter() {
         slide.style.opacity = "0";
@@ -118,7 +125,7 @@
     async function proceed_progress4() {
         if (subprogress === 0) {
             await flip([description_div!], () => {
-                step_html = "We choose the middle one to check.";
+                step += 1;
                 return tick();
             });
             animate(step_div!, {
@@ -138,7 +145,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html = "If there is multiple ones, choose the left one.";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[4]!, {
@@ -155,8 +162,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "It turns out F has 8521 books, less than 10000 books.";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[3]!, {
@@ -173,8 +179,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "All libraries having books less than F's, <br /> including F itself must not be our target.";
+                step += 1;
                 return tick();
             });
             for (const i of [0, 1, 2, 3])
@@ -192,8 +197,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "Again, choose the middle one between the remaining libraries.";
+                step += 1;
                 return tick();
             });
             for (const i of [5, 6]) {
@@ -212,7 +216,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html = "Choose the left one.";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[6]!, {
@@ -229,8 +233,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "It turns out that library H has 12107 books, more than 10000 books.";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[5]!, {
@@ -247,8 +250,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "All libraries having books more than H's, <br /> including H itself must not be our target.";
+                step += 1;
                 return tick();
             });
             for (const i of [5, 6, 7])
@@ -266,7 +268,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html = "We then check the only remaining library B.";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[4]!, {
@@ -283,8 +285,7 @@
                 y: [0, 100],
             });
             await flip([description_div!], () => {
-                step_html =
-                    "It turns out library B has 10000 books, as desired!";
+                step += 1;
                 return tick();
             });
             animate(short_order!.slot_divs[4]!, {
@@ -500,9 +501,7 @@
         >
             <div bind:this={description_div} class="w-fit mx-auto">
                 <p class="text-5xl/relaxed w-fit mx-auto">
-                    If we check only one libraries in the order, say <b
-                        bind:this={chosen_lib}>D</b
-                    >.
+                    Only checking <b bind:this={chosen_lib}>D</b>
                 </p>
                 <ShortOrder
                     slots={["A", "C", "D", "F", "B", "H", "E", "G"]}
@@ -512,29 +511,29 @@
 
             {#if subprogress! === 2}
                 <p class="my-[1em]" bind:this={subprogress_div}>
-                    If <b class="text-indigo-600">D</b> has exactly 10000 books,
-                    <br />
-                    then we are done!
+                    <b class="text-indigo-600">D</b> = 10000 books <ArrowRight
+                        class="inline wh-em"
+                    /> done!
                 </p>
             {/if}
             {#if subprogress! === 3}
                 <p class="my-[1em]" bind:this={subprogress_div}>
-                    If <b class="text-indigo-600">D</b> has <i>less</i> than
-                    10000 books, then we know that
-                    <br />
-                    all libraries having books <i>less</i> than
-                    <b class="text-indigo-600">D</b>'s must <i>not</i> have exactly
-                    10000 books.
+                    <b class="text-indigo-600">D</b>
+                    {"<"} 10000 books
+                    <ArrowDown class="wh-em mx-auto" />
+                    <X class="wh-em inline" color="red" /> all libraries having books
+                    {"<"}
+                    <b class="text-indigo-600">D</b>
                 </p>
             {/if}
             {#if subprogress! === 4}
                 <p class="my-[1em]" bind:this={subprogress_div}>
-                    If <b class="text-indigo-600">D</b> has <i>more</i> than
-                    10000 books, then we know that
-                    <br />
-                    all libraries having books <i>more</i> than
-                    <b class="text-indigo-600">D</b>'s must <i>not</i> have exactly
-                    10000 books.
+                    <b class="text-indigo-600">D</b>
+                    {">"} 10000 books
+                    <ArrowDown class="wh-em mx-auto" />
+                    <X class="wh-em inline" color="red" /> all libraries having books
+                    {">"}
+                    <b class="text-indigo-600">D</b>
                 </p>
             {/if}
         </button>
@@ -545,15 +544,13 @@
             onclick={change_description}
         >
             <p>
-                This fliter allows us to search
-                <br />
-                only <i>essential</i> libraries.
+                Only search <i>essential</i> libraries
             </p>
             <br />
             <p>
-                To ensure we filter out as many as possible in each
-                <br />
-                case, we always choose <b>the middle one</b> to check.
+                Filter out as many as possible in each step
+                <ArrowDown class="wh-em mx-auto" />
+                choose <b>the middle one</b> to check
             </p>
         </button>
     {:else if progress === 3}
@@ -563,14 +560,14 @@
             onclick={change_description}
         >
             <p>
-                This <i>algorithm</i> is called <b>`Binary Search`</b>.
+                <b>Algorithm: Binary Search</b>
             </p>
             <br />
-            <p>
-                <b>Binary</b> means <i>two</i>, also meaning that we divide the
-                <br />
-                range into half each step.
-            </p>
+            <div>
+                <b>Binary</b>: <i>two</i>
+                <ArrowDown class="wh-em mx-auto" />
+                <p>Dividing the search range into <i>half</i></p>
+            </div>
         </button>
     {:else if progress === 4}
         <button
@@ -580,23 +577,52 @@
         >
             <div>
                 <div class="w-fit mx-auto" bind:this={description_div}>
+                    <p class="my-4">Let's run it together!</p>
                     <p class="my-4">
-                        Too see this in real action, let's run it together!
-                    </p>
-                    <p class="my-4">
-                        Assume only library B has exactly 10000 books.
+                        B: <span class="text-green-600">10000 books</span>
                     </p>
                     <ShortOrder
                         slots={["A", "C", "D", "F", "B", "H", "E", "G"]}
                         bind:this={short_order}
                     />
                 </div>
-                <p
+                <div
                     class="text-4xl/relaxed text-gray-600 mt-8"
                     bind:this={step_div}
                 >
-                    {@html step_html}
-                </p>
+                    {#if step === 1}
+                        <p>Choose the middle one.</p>
+                    {:else if step === 2}
+                        <p>
+                            Choose the left one when the middle cannot be
+                            decided.
+                        </p>
+                    {:else if step === 3}
+                        <p>F has 8500 books {"<"} 10000 books.</p>
+                    {:else if step === 4}
+                        <p>
+                            All libraries that are in the left of F are
+                            eliminated.
+                        </p>
+                    {:else if step === 5}
+                        <p>Choose the middle one.</p>
+                    {:else if step === 6}
+                        <p>Choose the left one.</p>
+                    {:else if step === 7}
+                        <p>H has 12000 books {">"} 10000 books.</p>
+                    {:else if step === 8}
+                        <p>
+                            All libraries that are in the right of H are
+                            eliminated.
+                        </p>
+                    {:else if step === 9}
+                        <p>
+                            Choose the middle one, also the only remaining one.
+                        </p>
+                    {:else if step === 10}
+                        <p>B has 10000 books, task completed!</p>
+                    {/if}
+                </div>
             </div>
         </button>
     {:else if progress === 5}
@@ -634,7 +660,7 @@
                 {/if}
                 {#if subprogress! === 4}
                     <p class="my-[1em]" bind:this={subprogress_div}>
-                        It doesn't seem like it makes a big difference...
+                        Not super impressive...
                     </p>
                 {/if}
                 {#if subprogress! === 5}
