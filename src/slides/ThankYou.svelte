@@ -25,5 +25,7 @@
         Open source on Github with MIT License
         <br />
         Built with Svelte, Tailwind and Motion
+        <br />
+        Intended to be viewed on desktop
     </h2>
 </div>

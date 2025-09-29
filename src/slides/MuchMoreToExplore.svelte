@@ -42,14 +42,6 @@
         </button>
     {:else if progress === 1}
         <button
-            class="text-6xl/relaxed text-center"
-            bind:this={description_div}
-            onclick={change_description}
-        >
-            <p>We did not talk about <b>Data structures</b>...</p>
-        </button>
-    {:else if progress === 2}
-        <button
             class="text-5xl/relaxed text-center"
             bind:this={description_div}
             onclick={change_description}
@@ -69,15 +61,16 @@
                 Multiset
             </p>
         </button>
-    {:else if progress === 3}
+    {:else if progress === 2}
         <button
             class="text-6xl/relaxed text-center"
             bind:this={description_div}
             onclick={change_description}
         >
             <p>and much more!</p>
+            <p class="text-5xl">(I can talk about them for a whole week!)</p>
         </button>
-    {:else if progress === 4}
+    {:else if progress === 3}
         <button
             class="text-6xl/relaxed text-center"
             onclick={change_description}
@@ -89,26 +82,29 @@
                 Not for anything else but <br /> the beauty of algorithms!
             </p>
         </button>
-    {:else if progress === 5}
+    {:else if progress === 4}
         <button
-            class="text-6xl/relaxed text-center"
+            class="text-5xl/relaxed text-center"
             onclick={change_description}
             bind:this={description_div}
         >
             <p>
                 Binary Search might seems very intuitive, obvious
                 <br />
+                (Maybe some of you wanted to shout out the answer)
+                <br />
                 But it has a lot of unexpected usecase!
+
                 <br />
                 It also turns out to be the <b>optimal</b> searching
                 <br />
                 way for general sorted list!
             </p>
         </button>
-    {:else if progress === 6}
+    {:else if progress === 5}
         <div class="text-6xl/relaxed text-center" bind:this={description_div}>
             <p>
-                The beauty of Algorithms <ArrowDown class="wh-em mx-auto" /> The
+                The Beauty of Algorithms <ArrowDown class="wh-em mx-auto" /> The
                 Crystal of Human Wisdom
                 <br />
                 <span class="text-3xl"

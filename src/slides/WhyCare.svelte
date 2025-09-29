@@ -59,8 +59,6 @@
                 Think about how to solve a problem <b>in general</b>
                 <br />
                 Solve a problem <b>step by step</b>
-                <br />
-                Computer only understand explicit instructions!
             </p>
         </button>
     {:else if progress === 3}
@@ -83,15 +81,9 @@
                 <span class="text-right">Finding someone on Instagram</span>
                 <span><ArrowRight class="inline wh-em" /></span>
                 <span class="text-left">Variants of Binary Search</span>
-                <span class="text-right">Entering passwords</span>
-                <span><ArrowRight class="inline wh-em" /></span>
-                <span class="text-left">Secure hashing algorithm</span>
                 <span class="text-right">Running 3D games</span>
                 <span><ArrowRight class="inline wh-em" /></span>
                 <span class="text-left">Matrix multiplication algorithm</span>
-                <span class="text-right">Training AI</span>
-                <span><ArrowRight class="inline wh-em" /></span>
-                <span class="text-left">Backpropagation</span>
                 <span class="text-right"
                     >Calculating <Latex tex={"\\sqrt{n}"} /></span
                 >

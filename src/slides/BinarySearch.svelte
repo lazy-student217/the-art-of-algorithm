@@ -488,6 +488,20 @@
                 opacity: [0, 1],
                 y: [100, 0],
             });
+        } else if (subprogress === 10) {
+            await animate(subprogress_div!, {
+                opacity: [1, 0],
+                y: [0, 100],
+            });
+            await flip([description_div!], () => {
+                subprogress! += 1;
+                return tick();
+            });
+            subprogress_div!.style.opacity = "0";
+            animate(subprogress_div!, {
+                opacity: [0, 1],
+                y: [100, 0],
+            });
         }
     }
 </script>
@@ -643,9 +657,7 @@
                 </div>
                 {#if subprogress! === 1}
                     <p class="my-[1em]" bind:this={subprogress_div}>
-                        1 library, any count of books <ArrowRight
-                            class="inline wh-em"
-                        /> 1 day to count books
+                        1 library <ArrowRight class="inline wh-em" /> 1 day
                     </p>
                 {/if}
                 {#if subprogress! === 2}
@@ -665,8 +677,7 @@
                 {/if}
                 {#if subprogress! === 5}
                     <p class="my-[1em]" bind:this={subprogress_div}>
-                        However, maybe someone has found out, <br />
-                        this is a <i>huge</i> improvement from linear searching!
+                        Actually, this is a <i>huge</i> improvement from linear search!
                     </p>
                 {/if}
                 {#if subprogress! === 6}
@@ -674,17 +685,14 @@
                         class="my-[1em] flex flex-col items-center"
                         bind:this={subprogress_div}
                     >
-                        <p>Filtering out half of libraries</p>
+                        <p>Changing the number 10000</p>
                         <ArrowDown class="wh-em" />
-                        <p>
-                            Find any library with arbitrary book within 3 days!
-                        </p>
+                        <p>Find any library within 3 days!</p>
                     </div>
                 {/if}
                 {#if subprogress! === 7}
                     <p class="my-[1em]" bind:this={subprogress_div}>
-                        This algorithm works even better when <br /> we got numerous
-                        libraries to work with!
+                        Even better when we got more libraries to work with!
                     </p>
                 {/if}
                 {#if subprogress! === 8}
@@ -692,10 +700,7 @@
                         class="my-[1em] flex flex-col items-center"
                         bind:this={subprogress_div}
                     >
-                        <p>
-                            Libraries needed to search have doubled (16
-                            libraries)
-                        </p>
+                        <p>Double libraries (16 libraries)</p>
                         <ArrowDown class="wh-em" />
                         <p>
                             Binary Search: still at most <b>4 days</b>!
@@ -728,13 +733,24 @@
                         class="my-[1em] flex flex-col items-center"
                         bind:this={subprogress_div}
                     >
-                        <p>In math, for <Latex tex="n" /> libraries</p>
+                        <p>Mathematically, for <Latex tex="n" /> libraries</p>
                         <ArrowDown class="wh-em" />
                         <p>
                             Binary Search: at most <Latex tex="\log_2(n)" /> days!
                             <br />
                             Linear Search: at worst
                             <Latex tex="n" /> days...
+                        </p>
+                    </div>
+                {/if}
+                {#if subprogress! === 11}
+                    <div
+                        class="my-[1em] flex flex-col items-center"
+                        bind:this={subprogress_div}
+                    >
+                        <p>
+                            Only knowing that Binary Search is <br /> much faster
+                            is enough!
                         </p>
                     </div>
                 {/if}

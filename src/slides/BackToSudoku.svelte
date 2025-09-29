@@ -48,9 +48,10 @@
     class="relative flex flex-col w-full grow h-full px-8 justify-center items-center"
     bind:this={slide}
 >
-    <button class="text-7xl self-center" onclick={show_extra_topics}
-        >{title_text}</button
-    >
+    <button class="flex flex-col gap-8 self-center" onclick={show_extra_topics}>
+        <h1 class="text-7xl">{title_text}</h1>
+        <h2 class="text-4xl">(We won't solve it, what a disappointment!)</h2>
+    </button>
     <h2
         class="absolute bottom-[5em] left-[5em] text-4xl w-fit text-black/60 opacity-0"
         bind:this={nullgetter, binds}

@@ -85,7 +85,7 @@
         >
             <div class="text-5xl font-bold">Definiton</div>
             <div class="text-4xl text-center">
-                A <u>sequence</u> of <u>instruction</u> to do some
+                A <u>sequence</u> of <u>instructions</u> to perform a
                 <u>computation</u>
             </div>
         </div>
