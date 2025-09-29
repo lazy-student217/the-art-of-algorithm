@@ -113,7 +113,6 @@
             playing = true;
             async function quicksort(low: number, high: number) {
                 if (low < high && low >= 0) {
-                    console.log("quicksort start", low, high);
                     let p = list.arr[high];
                     let i = low;
                     for (let j = low; j < high; j += 1) {
@@ -121,7 +120,6 @@
                             await list.swap(i, j);
                             i += 1;
                         }
-                        console.log("What are you waiting???");
                     }
                     await list.swap(i, high);
                     let res = i;
